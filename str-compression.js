@@ -3,11 +3,20 @@
  * @return {string}
  */
 var strCompression = function (str) {
-  let hash = {};
-  str.split("").forEach((item) => {
-    hash[item] = hash[item] ? hash[item] + 1 : 1;
-  });
-  return Object.keys(hash)
-    .map((key) => key + hash[key])
-    .join("");
+  const result = [];
+  let count = 1;
+
+  for (let i = 0; i <= str.length - 1; i++) {
+    let currentLetter = str[i];
+
+    if (currentLetter === str[i + 1]) {
+      count += 1;
+    } else {
+      result.push(currentLetter, count);
+      currentLetter = str[i + 1];
+      count = 1;
+    }
+  }
+
+  return result.join("");
 };
