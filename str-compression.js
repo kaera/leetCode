@@ -3,7 +3,7 @@
  * @return {string}
  */
 var strCompression = function (str) {
-  const result = [];
+  let result = "";
   let count = 1;
 
   for (let i = 0; i <= str.length - 1; i++) {
@@ -12,11 +12,11 @@ var strCompression = function (str) {
     if (currentLetter === str[i + 1]) {
       count += 1;
     } else {
-      result.push(currentLetter, count);
+      result += `${currentLetter}${count}`;
       currentLetter = str[i + 1];
       count = 1;
     }
   }
 
-  return result.join("");
+  return result;
 };
