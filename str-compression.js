@@ -2,11 +2,27 @@
  * @param {string} str
  * @return {string}
  */
-var strCompression = function (str) {
-  for (let i = str.length; i--; i >= 0) {
-    if (str[i - 1] === str[i]) {
-      str = str.substr(0, i - 1) + str.substr(i);
+let compress = (str) => {
+  let readPointer = 1;
+  let writePointer = 0;
+  let strLength = 1;
+
+  if (str.length <= 1) {
+    return str;
+  }
+
+  while (readPointer <= str.length - 1) {
+    if (str[readPointer] === str[writePointer]) {
+      readPointer += 1;
+    } else {
+      str =
+        str.substr(0, writePointer + 1) +
+        str[readPointer] +
+        str.substr(writePointer + 2);
+      writePointer += 1;
+      readPointer += 1;
+      strLength += 1;
     }
   }
-  return str;
+  return str.substr(0, strLength);
 };
