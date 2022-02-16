@@ -10,7 +10,7 @@ let binarySearchLeftmost = (nums, target) => {
       endPointer = midPointer;
     }
   }
-  return endPointer;
+  return target === nums[endPointer] ? endPointer : -1;
 };
 
 let binarySearchRightmost = (nums, target) => {
@@ -26,5 +26,5 @@ let binarySearchRightmost = (nums, target) => {
       startPointer = midPointer + 1;
     }
   }
-  return endPointer;
+  return target === nums[startPointer - 1] ? startPointer - 1 : -1;
 };
